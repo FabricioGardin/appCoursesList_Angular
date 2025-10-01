@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { NgStyle } from '../../../node_modules/@angular/common/common_module.d-NEF7UaHr';
 
 @Component({
   selector: 'app-courses-list',
-  imports: [],
+  imports: [NgStyle],
   templateUrl: './courses-list.component.html',
   styleUrl: './courses-list.component.css',
 })
@@ -16,6 +17,8 @@ export class CourseslistComponent {
       description: 'Learn the basics of Angular.',
       price: 49,
       date: '2025-03-25',
+      soldOut: false,
+      img: 'Angular_icon.png',
     },
     {
       id: 2,
@@ -23,6 +26,8 @@ export class CourseslistComponent {
       description: 'Deep dive into Angular features.',
       price: 22,
       date: '2025-01-22',
+      soldOut: true,
+      img: 'Angular_icon.png',
     },
     {
       id: 3,
@@ -30,6 +35,12 @@ export class CourseslistComponent {
       description: 'Understand reactive programming with RxJS.',
       price: 89,
       date: '2025-11-25',
+      soldOut: false,
+      img: 'Angular_icon.png',
     },
   ];
+
+  viewDetails(title: string): void {
+    alert(`More details about ${title} coming soon!`);
+  }
 }
