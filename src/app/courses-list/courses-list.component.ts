@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { CurrencyPipe, DatePipe, NgStyle } from '@angular/common';
+
+import { CourseCardComponent } from '../course-card/course-card.component';
 
 @Component({
   selector: 'app-courses-list',
-  imports: [NgStyle, DatePipe, CurrencyPipe],
+  imports: [CourseCardComponent],
   templateUrl: './courses-list.component.html',
   styleUrl: './courses-list.component.css',
 })
 export class CourseslistComponent implements OnInit {
   title: string = 'Available Courses';
+  wishList: any[] = [];
 
   courses = [
     {
@@ -46,7 +48,12 @@ export class CourseslistComponent implements OnInit {
   ngOnInit(): void {
     console.log('CourseslistComponent initialized');
   }
-  viewDetails(title: string): void {
-    alert(`More details about ${title} coming soon!`);
+  onCourseBooked(course: any): void {
+    console.log('Parent heard about booking:', course.title);
+  }
+
+  onWishListAdded(course: any) {
+    console.log('Parent heard about wish list addition:', course.title);
+    this.wishList.push(course);
   }
 }

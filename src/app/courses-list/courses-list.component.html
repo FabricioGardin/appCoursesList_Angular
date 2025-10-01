@@ -1,20 +1,17 @@
 <h2>{{ title }}</h2>
-
-@for(course of courses; track course.id) {
-<div class="course-item">
-  <h3>{{ course.title }}</h3>
-  <p>{{ course.description }}</p>
-  <p>{{ course.price | currency : "USD" }}</p>
-  <p>{{ course.date | date : "longDate" }}</p>
-  <p [hidden]="!courses[0].soldOut">Sold Out</p>
-  <img [src]="course.img" [alt]="course.title" width="100" />
-  @if(course.price < 50) {
-  <div class="special-offer">Special Offer!</div>
-  } @if(course.onSale) {
-  <div class="sale-banner">On Sale!</div>
+@if(wishList.length > 0) {
+<div class="wishlist-banner">
+  <span class="heart">♥</span>
+  My Wish List : @for(course of wishList; track course.title) {
+  <span class="wishlist-item">{{ course.title }}</span>
   }
-  <button (click)="viewDetails(courses[0].title)">View details</button>
 </div>
+} @for(course of courses; track course.id) {
+<app-course-card
+  [course]="course"
+  (courseBooked)="onCourseBooked($event)"
+  (wishListAdded)="onWishListAdded($event)"
+></app-course-card>
 
 }
 <!-- <div class="course-item">
