@@ -9,6 +9,16 @@ h3 {
   margin: 0 0 0.5rem 0;
 }
 
+.special-offer {
+  color: rgb(0, 17, 255);
+  font-weight: bold;
+}
+.sale-banner {
+  background-color: #ffcc00;
+  color: #333;
+  font-weight: bold;
+}
+
 button {
   background-color: #007bff;
   color: white;

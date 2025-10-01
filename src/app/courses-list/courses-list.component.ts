@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
-import { NgStyle } from '../../../node_modules/@angular/common/common_module.d-NEF7UaHr';
+import { Component, OnInit } from '@angular/core';
+import { CurrencyPipe, DatePipe, NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-courses-list',
-  imports: [NgStyle],
+  imports: [NgStyle, DatePipe, CurrencyPipe],
   templateUrl: './courses-list.component.html',
   styleUrl: './courses-list.component.css',
 })
-export class CourseslistComponent {
+export class CourseslistComponent implements OnInit {
   title: string = 'Available Courses';
 
   courses = [
@@ -19,6 +19,7 @@ export class CourseslistComponent {
       date: '2025-03-25',
       soldOut: false,
       img: 'Angular_icon.png',
+      onSale: false,
     },
     {
       id: 2,
@@ -28,6 +29,7 @@ export class CourseslistComponent {
       date: '2025-01-22',
       soldOut: true,
       img: 'Angular_icon.png',
+      onSale: true,
     },
     {
       id: 3,
@@ -36,10 +38,14 @@ export class CourseslistComponent {
       price: 89,
       date: '2025-11-25',
       soldOut: false,
-      img: 'Angular_icon.png',
+      img: 'RxJS_logo.png',
+      onSale: true,
     },
   ];
 
+  ngOnInit(): void {
+    console.log('CourseslistComponent initialized');
+  }
   viewDetails(title: string): void {
     alert(`More details about ${title} coming soon!`);
   }
