@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CourseCardComponent } from '../course-card/course-card.component';
+import { Course } from '../models/course.model';
 
 @Component({
   selector: 'app-courses-list',
@@ -10,9 +11,9 @@ import { CourseCardComponent } from '../course-card/course-card.component';
 })
 export class CourseslistComponent implements OnInit {
   title: string = 'Available Courses';
-  wishList: any[] = [];
+  wishList: Course[] = [];
 
-  courses = [
+  courses: Course[] = [
     {
       id: 1,
       title: 'Angular Basics',
@@ -48,11 +49,11 @@ export class CourseslistComponent implements OnInit {
   ngOnInit(): void {
     console.log('CourseslistComponent initialized');
   }
-  onCourseBooked(course: any): void {
+  onCourseBooked(course: Course): void {
     console.log('Parent heard about booking:', course.title);
   }
 
-  onWishListAdded(course: any) {
+  onWishListAdded(course: Course) {
     console.log('Parent heard about wish list addition:', course.title);
     this.wishList.push(course);
   }
